@@ -1,0 +1,460 @@
+$card-radius: 12px;
+
+@import "_fonts.scss";
+@import "_colors.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@mixin flex-between() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin button(
+  $padding-x,
+  $background: $background-base,
+  $color: $color-dark,
+  $font-size: $font-size-small
+) {
+  padding-block: 11px;
+  padding-inline: $padding-x;
+  display: inline-block;
+  border-radius: 12px;
+  border: none;
+  background-color: $background;
+  color: $color;
+  font-size: $font-size;
+  cursor: pointer;
+}
+
+body,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-main;
+}
+
+body::-webkit-scrollbar {
+  width: 0; /* Скрываем полосу скролла */
+  background: transparent; /* Делаем фон прозрачным */
+}
+
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1170px;
+}
+
+.header {
+  background-color: #263238!important;
+  &__wrapper {
+    @include flex-between();
+  }
+
+  &__logo {
+    background-color: $background-base!important;
+    color: $color-dark;
+    font-family: $font-main;
+    font-size: $font-size-logo;
+    padding: 22px 23px;
+    display: inline-block;
+  }
+
+  &__list {
+    display: flex;
+    gap: 50px;
+  }
+  &__nav-link {
+    color: $color-light;
+    font-family: $font-secondary;
+    font-size: $font-size-small;
+  }
+
+  &__burger {
+    position: relative;
+    appearance: none;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
+    cursor: pointer;
+    &:not(:checked) {
+      background-image: url("https://api.iconify.design/codicon:three-bars.svg?color=#ffffff");
+    }
+    &:checked {
+      background-image: url("https://api.iconify.design/codicon:chrome-close.svg?color=#ffffff");
+    }
+    &:not(:checked) + .header__mobile-list {
+      transform: scaleX(0);
+      visibility: hidden;
+      opacity: 0;
+    }
+    &:checked + .header__mobile-list {
+      visibility: visible;
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  // &__mobile-nav:has(&__burger:checked) {
+  //   background-color: red;
+  //   width: 60px;
+  //   height: 100px;
+  // }
+
+  &__mobile-nav {
+    position: relative;
+    display: none;
+  }
+  &__mobile-list {
+    transition: 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 30vw;
+    height: 100vh;
+    background-color: #263238f8;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 60px;
+    // display: none;
+    transform-origin: right;
+    transition: 0.2s;
+  }
+  &__nav-mobile-link {
+    color: $color-light;
+    font-family: $font-secondary;
+  }
+}
+
+body:has(.header):has(.header__wrapper):has(.header__mobile-nav):has(
+    .header__burger:checked
+  ) {
+  overflow-y: hidden;
+}
+
+.hero {
+  padding: 80px 0;
+  &__wrapper {
+   @include flex-between();
+ flex-wrap: nowrap;}
+  &__description {
+    max-width: 487px;
+  }
+  &__heading {
+    font-size: $font-size-h1;
+  }
+  &__text {
+    margin-top: 20px;
+    margin-bottom: 48px;
+    font-size: $font-size-medium;
+    max-width: 358px;
+    &_underline {
+      text-decoration: underline;
+    }
+  }
+}
+
+.hero__button {
+  @include button(47px, $background-base, $color-dark, $font-size-h3);
+}
+
+.contact {
+  max-width: 1512px;
+  //height: 255px;
+  margin: 0 auto;
+}
+
+.banner {
+  background-image: url(img/banner.png);
+  width: 49%;
+ // height: inherit;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: -4px;
+}
+
+.contact-form {
+  display: inline-block;
+  width: 49%;
+  height: inherit;
+  padding: 72px 50px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(img/banner-right.png);
+  vertical-align: top;
+  &__text {
+    color: $color-light;
+    font-size: $font-size-medium;
+    max-width: 424px;
+    display: block;
+    margin-bottom: 26px;
+  }
+}
+
+.button-lime {
+  @include button(33.5px);
+}
+
+.phone-wrapper {
+  display: flex;
+  max-width: 451px;
+  gap: 16px;
+&__field {
+    padding: 11px 16px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+  }
+}
+
+.button-dark {
+  @include button(94.5px, $background-dark, $color-light);
+}
+.cards-wrapper {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.cards-small-wrapper {
+  display: flex;
+  gap: 30px;
+}
+.card-small {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  border-radius: $card-radius;
+  border: 1px solid #e3e3e3;
+  max-width: 270px;
+  &__title {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: $font-size-h3;
+  }
+  &__price {
+    display: block;
+    margin-bottom: 22px;
+  }
+}
+
+.card-large {
+  border-radius: $card-radius;
+  background-image: url("img/product-big.png");
+  background-size: cover;
+  background-position: 50%;
+  position: relative;
+  flex-grow: 1;
+  &__footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0;
+    max-width: 100%;
+    padding: 16px;
+  }
+  &__title {
+    color: $color-light;
+    font-size: $font-size-h3;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  &__price {
+    color: $color-light;
+    display: block;
+    margin-bottom: 22px;
+  }
+  &__button {
+    @include button(52.5px);
+  }
+}
+
+.catalogue {
+  padding-block: 68px;
+  &__heading {
+    font-size: $font-size-h1;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+}
+
+.footer {
+  background-color: #e3e3e3;
+  margin-top: 44px;
+  &__title {
+    text-align: center;
+    color: $color-dark;
+    font-family: $font-main;
+    font-size: $font-size-logo;
+    padding-block: 22px;
+    display: block;
+    color: #777;
+  }
+}
+
+@media screen and (max-width: 1170px){
+  .hero{
+    &__wrapper{
+     // justify-content:space-around ;
+     padding-inline: 40px;
+    }
+  }
+
+}
+@media screen and (max-width: 1143px) {
+  .banner {
+    display: none;
+  }
+  .contact-form {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 992px) {
+ h1 {
+  font-size: 32px!important;
+ }
+ h2 {
+  font-size: 32px!important;
+ }
+ h3 {
+  font-size: 19px!important;
+ }
+ p, .hero__text{
+  font-size: 18px;
+ }
+
+  .header {
+    &__nav {
+      display: none;
+    }
+    &__mobile-nav {
+      display: block;
+    }
+    &__logo{
+      font-size: 22px!important;
+    }
+  }
+  .hero {
+    &__image{
+      width: 280px;
+    }
+    &__wrapper{
+      flex-wrap: nowrap;
+    }
+    &__button{
+      font-size: 19px!important;
+    }
+  }
+  .contact-form   {
+    &__text{font-size: 18px!important;}
+    
+  }
+  .cards-wrapper{
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-large{
+    width: calc(2 * 285px);
+    border-radius: $card-radius;
+    overflow: hidden;
+    
+  }
+  .card-large__footer{
+    position: static;
+
+  }
+ 
+}
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 30px!important;
+   }
+   h2 {
+    font-size: 30px!important;
+   }
+   h3 {
+    font-size: 17px!important;
+   }
+  .hero {
+    &__image{ 
+      display: none;}
+      &__button{
+        font-size: 17px!important;
+      }
+    }
+    p, .hero__text{
+      font-size: 16px!important;
+     }
+     .header{
+      &__logo{
+        font-size: 20px!important;
+      }
+     }
+     .contact-form   {
+      &__text{font-size: 16px!important;}
+      
+    }
+}
+  @media screen and (max-width: 576px) {
+    h1 {
+      font-size: 28px!important;
+     }
+     h2 {
+      font-size: 28px!important;
+     }
+     h3 {
+      font-size: 15px!important;
+     }
+     p, .hero__text{
+      font-size: 14px!important;
+     }
+     .hero {
+      &__button{
+        font-size: 15px!important;
+      }
+     }
+     .header{
+      &__logo{
+        font-size: 18px!important;
+      }
+     }
+     .phone-wrapper{
+      flex-direction: column;
+
+     }
+     .contact-form{
+      &__{
+        max-width: 100%;
+      }
+      &__text {
+        font-size: 18px!important;
+      }
+     }
+     .contact-form   {
+      &__text{font-size: 14px!important;}
+      
+    }
+    .header{   
+       &__mobile-list{
+        width: 50vw;
+       }
+    }
+
+  }
