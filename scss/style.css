@@ -138,7 +138,7 @@ body:has(.header):has(.header__wrapper):has(.header__mobile-nav):has(.header__bu
   text-decoration: underline;
 }
 
-.hero__button {
+.hero-button {
   padding-block: 11px;
   padding-inline: 47px;
   display: inline-block;
@@ -156,7 +156,7 @@ body:has(.header):has(.header__wrapper):has(.header__mobile-nav):has(.header__bu
 }
 
 .banner {
-  background-image: url(img/banner.png);
+  background-image: url(img/2.jpg);
   width: 49%;
   display: inline-block;
   background-repeat: no-repeat;
@@ -169,7 +169,7 @@ body:has(.header):has(.header__wrapper):has(.header__mobile-nav):has(.header__bu
   width: 49%;
   height: inherit;
   padding: 72px 50px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/banner-right.png);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/2.jpg);
   vertical-align: top;
 }
 .contact-form__text {
@@ -180,7 +180,7 @@ body:has(.header):has(.header__wrapper):has(.header__mobile-nav):has(.header__bu
   margin-bottom: 26px;
 }
 
-.button-lime {
+.phone-wrapper-button {
   padding-block: 11px;
   padding-inline: 33.5px;
   display: inline-block;
@@ -249,7 +249,7 @@ body:has(.header):has(.header__wrapper):has(.header__mobile-nav):has(.header__bu
 
 .card-large {
   border-radius: 12px;
-  background-image: url("img/product-big.png");
+  background-image: url("img/2.jpg");
   background-size: cover;
   background-position: 50%;
   position: relative;
